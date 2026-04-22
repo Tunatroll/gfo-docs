@@ -18,9 +18,18 @@
         {
           "group": "AI Services",
           "pages": ["local-llm-privacy"]
+        },
+        {
+          "group": "Case Studies",
+          "pages": ["case-studies/river-intel"]
+        },
+        {
+          "group": "About",
+          "pages": ["about/founder"]
         }
       ],
       "footerSocials": {
         "github": "https://github.com/Tunatroll"
       }
     }
+    
