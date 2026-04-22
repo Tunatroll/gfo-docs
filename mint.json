@@ -1,0 +1,26 @@
+{
+      "name": "Grand Flip Out",
+      "logo": {
+        "light": "/logo/light.svg",
+        "dark": "/logo/dark.svg"
+      },
+      "favicon": "/favicon.png",
+      "colors": {
+        "primary": "#FF9900",
+        "light": "#FFB84D",
+        "dark": "#CC7A00"
+      },
+      "navigation": [
+        {
+          "group": "Getting Started",
+          "pages": ["introduction"]
+        },
+        {
+          "group": "AI Services",
+          "pages": ["local-llm-privacy"]
+        }
+      ],
+      "footerSocials": {
+        "github": "https://github.com/Tunatroll"
+      }
+    }
