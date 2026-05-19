@@ -20,12 +20,20 @@
           "pages": ["local-llm-privacy"]
         },
         {
+          "group": "Security",
+          "pages": ["security/research"]
+        },
+        {
           "group": "Case Studies",
           "pages": ["case-studies/river-intel"]
         },
         {
           "group": "About",
           "pages": ["about/founder"]
+        },
+        {
+          "group": "Development",
+          "pages": ["development/docs-site"]
         }
       ],
       "footerSocials": {
