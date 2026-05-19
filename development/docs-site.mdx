@@ -6,12 +6,12 @@ description: 'How to maintain the Grand Flip Out Mintlify documentation site.'
 # Docs Site Runbook
 
 This repository contains the public documentation site for Grand Flip Out. The
-site is configured with Mintlify through `mint.json`, and each content page is an
+site is configured with Mintlify through `docs.json`, and each content page is an
 `.mdx` file in the directory listed by the navigation config.
 
 ## Repository Map
 
-- `mint.json` controls site metadata, colors, social links, and navigation.
+- `docs.json` controls site metadata, colors, social links, and navigation.
 - `introduction.mdx` is the Getting Started landing page.
 - `local-llm-privacy.mdx` documents the local AI privacy and security model.
 - `case-studies/` contains customer or product case studies.
@@ -27,7 +27,7 @@ the Mintlify CLI from the repository root:
 npx mint dev
 ```
 
-The preview uses `mint.json` as the site configuration and serves the docs with
+The preview uses `docs.json` as the site configuration and serves the docs with
 live reload. If port `3000` is already in use, run:
 
 ```bash
@@ -38,16 +38,22 @@ npx mint dev --port 3001
 
 1. Add or update an `.mdx` file in the directory that matches the topic.
 2. Include frontmatter when the page needs a custom title or description.
-3. Add the page path to the matching `navigation` group in `mint.json`.
-4. Keep page paths extensionless in `mint.json`.
+3. Add the page path to the matching `navigation.groups` entry in `docs.json`.
+4. Keep page paths extensionless in `docs.json`.
 5. Run a local preview and click the edited navigation entry.
 
 Example navigation entry:
 
 ```json
 {
-  "group": "Development",
-  "pages": ["development/docs-site"]
+  "navigation": {
+    "groups": [
+      {
+        "group": "Development",
+        "pages": ["development/docs-site"]
+      }
+    ]
+  }
 }
 ```
 
@@ -64,10 +70,12 @@ Example navigation entry:
 ## Troubleshooting
 
 - **Page missing from navigation:** Confirm the page path is listed in
-  `mint.json` without the `.mdx` extension.
-- **Broken local preview:** Validate that `mint.json` is valid JSON and rerun
+  `docs.json` without the `.mdx` extension.
+- **Broken local preview:** Validate that `docs.json` is valid JSON and rerun
   `npx mint dev`.
 - **Unexpected page title:** Check the page frontmatter before changing the
   visible heading.
 - **Duplicate topic pages:** Merge content into the strongest existing page and
   remove the redundant navigation entry.
+- **Legacy config appears:** Mintlify previously used `mint.json`. Keep
+  `docs.json` as the source of truth after migration.
