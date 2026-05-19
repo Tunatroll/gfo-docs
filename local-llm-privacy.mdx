@@ -1,3 +1,50 @@
 # Privacy & Security
+
 ## The Zero-Cloud Promise
-We process 100% of your data locally using our RTX 5090 and Ollama setup. Your data never leaves our secure environment.
+
+Grand Flip Out's AI services are documented around a local-first operating
+model: workloads run on a local RTX 5090 workstation through Ollama, and
+customer data is not sent to hosted model APIs.
+
+## Architecture
+
+The local LLM environment keeps the model runtime, prompts, and generated
+outputs inside the same controlled environment.
+
+1. A request is prepared for the local Ollama runtime.
+2. The model runs on local hardware instead of a cloud inference endpoint.
+3. The response is returned from the local environment.
+
+This design keeps sensitive inputs close to the workflow that uses them and
+reduces dependency on network access for AI inference.
+
+## Usage Constraints
+
+- Do not add hosted AI providers to workflows covered by the zero-cloud
+  promise unless the exception is documented before launch.
+- Treat prompts, uploaded files, retrieval context, and generated outputs as
+  sensitive project data.
+- Keep model names, data sources, retention behavior, and operator access
+  explicit in any service-specific documentation.
+- When a workflow requires internet access for non-AI data sources, document
+  the external endpoint separately from the local inference path.
+
+## Operational Checklist
+
+Before publishing or changing a local AI workflow:
+
+1. Confirm that inference is routed through Ollama.
+2. Confirm that no hosted model API keys are required for the workflow.
+3. Document any external data source used before or after inference.
+4. Record the expected offline behavior and known limitations.
+5. Add troubleshooting notes for model availability, hardware constraints, and
+   data-source failures.
+
+## Common Pitfalls
+
+- **Silent cloud fallback:** Avoid SDK defaults that automatically call hosted
+  providers when a local model is unavailable.
+- **Unclear data boundaries:** Separate local inference from any upstream
+  public data fetches or downstream integrations.
+- **Missing model context:** Document which model family a workflow expects so
+  operators can reproduce behavior.
